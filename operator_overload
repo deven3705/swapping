@@ -1,0 +1,81 @@
+#include<iostream>
+using namespace std;
+
+class B; 
+
+class A
+{
+private:
+    int a;
+
+public:
+    A()
+    {
+        a = 0;
+    }
+    A(int a1)
+    {
+        a = a1;
+    }
+    friend class B;
+   
+    A operator=( B &b);
+
+    void display()
+    {
+        cout << "Value of a: " << a << endl;
+    }
+};
+
+class B
+{
+private:
+    int b;
+
+public:
+    B(int b1)
+    {
+        b = b1;
+    }
+    friend class A;
+    
+    B operator=( A &a);
+
+    void display()
+    {
+        cout << "Value of b: " << b << endl;
+    }
+};
+
+A A::operator=( B &b1)
+{
+    a=b1.b;
+    return *this;
+}
+
+B B::operator=( A &a1)
+{
+    b=a1.a;
+    return *this;
+}
+
+int main()
+{
+    A a(5);
+    A temp;
+    B b(10);
+
+    cout << "Before swapping:" << endl;
+    a.display();
+    b.display();
+
+    temp=a;
+    a = b;
+    b=temp;
+
+    cout << "After swapping:" << endl;
+    a.display();
+    b.display();
+
+    return 0;
+}
