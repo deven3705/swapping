@@ -15,7 +15,6 @@ class B{
 };
 
 void swap( A &a1,B &b1){
-    // int temp=0;
 
     int size=(sizeof(a1.arr1)/sizeof(int));
 
