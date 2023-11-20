@@ -27,7 +27,7 @@ void swap(A &a1, B &b1, int n)
         cout << a1.a[i] << " ";
     }
     cout << endl;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << b1.b[i] << " ";
     }
