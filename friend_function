@@ -1,47 +1,58 @@
-
 #include<iostream>
 using namespace std;
-
-
 class B;
-class A{
-int a ;
+class A
+{
+private:
+int v1;
 public:
-A(){
-a=60;
+void setdata(int val)
+{
+v1=val;
 }
-
-friend void swap(A &a1,B &b1);
+int display()
+{
+return v1;
+}
+friend void exchange(A &x,B &y);
 };
 
-
-class B{
-int b;
+class B
+{
+private:
+int v2;
 public:
-B(){
-b=70;
+void setdata(int val)
+{
+v2=val;
 }
-
-friend void swap(A &a1,B &b1);
+int display()
+{
+return v2;
+}
+friend void exchange(A &x,B &y);
 };
 
-
-void swap(A &a1,B &b1){
+void exchange(A &x,B &y)
+{
 int temp;
-temp=b1.b;
-b1.b=a1.a;
-a1.a=temp;
-cout<<"values after swapping :"<<endl;
-cout<<"a is "<<a1.a<<endl;
-cout<<"b is "<<b1.b<<endl;
-
+temp=x.v1;
+x.v1=y.v2;
+y.v2=temp;
 }
 
-int main(){
-
-A a1;
-B b1;
-swap(a1,b1);
-
+int main()
+{
+A a;
+B b;
+a.setdata(10);
+b.setdata(20);
+cout<<"Before Swap"<<endl;
+cout<<"a="<<a.display()<<endl;
+cout<<"b="<<b.display()<<endl;
+exchange(a,b);
+cout<<"After swap."<<endl;
+cout<<"a="<<a.display()<<endl;
+cout<<"b="<<b.display()<<endl;
 return 0;
 }
